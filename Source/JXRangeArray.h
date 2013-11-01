@@ -27,6 +27,7 @@
 }
 
 - (instancetype)init;
+- (instancetype)initWithCapacity:(NSUInteger)capacity;
 - (instancetype)initWithRanges:(const NSRange *)ranges count:(NSUInteger)count;
 
 - (NSUInteger)count;

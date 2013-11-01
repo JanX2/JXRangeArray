@@ -42,7 +42,7 @@ const NSUInteger testRangeArrayOf4Count = sizeof(testRangeArrayOf4)/sizeof(testR
 
 - (void)testBasics
 {
-	JXRangeArray *rangeArray = [JXRangeArray new];
+	JXRangeArray *rangeArray = [[JXRangeArray alloc] initWithCapacity:2];
 	
 	STAssertEquals(rangeArray.count, (NSUInteger)0, @"rangeArray.count should be 0.");
 	
@@ -50,6 +50,7 @@ const NSUInteger testRangeArrayOf4Count = sizeof(testRangeArrayOf4)/sizeof(testR
 	
 	STAssertEquals(rangeArray.count, (NSUInteger)1, @"rangeArray.count should be 1.");
 	STAssertTrue(NSEqualRanges([rangeArray rangeAtIndex:0], testRangeArrayOf4[0]), @"rangeArray[0] should be the same as initialRange.");
+	STAssertEquals(rangeArray.capacity, (NSUInteger)2, @"rangeArray.capacity should be 2.");
 	
 	// Trigger reallocation.
 	[rangeArray addRange:testRangeArrayOf4[1]];

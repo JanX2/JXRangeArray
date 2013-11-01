@@ -27,11 +27,16 @@ const NSUInteger JXRangeArrayGrowthFactor = 2;
 
 - (instancetype)init
 {
+	return [self initWithCapacity:16];
+}
+
+- (instancetype)initWithCapacity:(NSUInteger)capacity;
+{
 	self = [super init];
 	
 	if (self) {
 		_count = 0;
-		_capacity = 2;
+		_capacity = capacity;
 		_ranges = malloc(sizeof(NSRange) * _capacity);
 	}
 	
@@ -40,15 +45,15 @@ const NSUInteger JXRangeArrayGrowthFactor = 2;
 
 - (id)initWithRanges:(const NSRange *)ranges count:(NSUInteger)count
 {
-	self = [super init];
+	// Calculate _capacity by rounding _count to nearest equal or greater power of 2.
+	double log2OfCount = log2(count);
+	double bestCapacity = exp2(ceil(log2OfCount));
+	NSUInteger capacity = (NSUInteger)bestCapacity;
+	
+	self = [self initWithCapacity:capacity];
 	
 	if (self) {
 		_count = count;
-		
-		// Calculate _capacity by rounding _count to nearest equal or greater power of 2.
-		double log2OfCount = log2(_count);
-		double bestCapacity = exp2(ceil(log2OfCount));
-		_capacity = (NSUInteger)bestCapacity;
 		
 		_ranges = malloc(sizeof(NSRange) * _capacity);
 		memcpy(_ranges, ranges, sizeof(NSRange) * _count);
