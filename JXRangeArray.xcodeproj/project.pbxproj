@@ -14,7 +14,6 @@
 		3DD33E211822A5D6006B607C /* JXRangeArray+Privat.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DD33E1C1822A5D6006B607C /* JXRangeArray+Privat.m */; };
 		3DD33E221822A5D6006B607C /* JXRangeArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DD33E1E1822A5D6006B607C /* JXRangeArray.m */; };
 		3DD33E231822A5D6006B607C /* JXRangeArrayTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DD33E201822A5D6006B607C /* JXRangeArrayTest.m */; };
-		3DD33E251822A717006B607C /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DD33E241822A716006B607C /* SenTestingKit.framework */; };
 		3DD33E261822A8B5006B607C /* JXRangeArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DD33E1E1822A5D6006B607C /* JXRangeArray.m */; };
 /* End PBXBuildFile section */
 
@@ -47,7 +46,7 @@
 		3DD33DFA1822A43A006B607C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		3DD33DFD1822A43A006B607C /* JXRangeArray-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "JXRangeArray-Prefix.pch"; sourceTree = "<group>"; };
 		3DD33DFE1822A43A006B607C /* JXRangeArray.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = JXRangeArray.1; sourceTree = "<group>"; };
-		3DD33E091822A478006B607C /* JXRangeArrayTest.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JXRangeArrayTest.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3DD33E091822A478006B607C /* JXRangeArrayTest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JXRangeArrayTest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3DD33E0E1822A478006B607C /* JXRangeArrayTest-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "JXRangeArrayTest-Info.plist"; sourceTree = "<group>"; };
 		3DD33E101822A478006B607C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		3DD33E141822A478006B607C /* JXRangeArrayTest-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "JXRangeArrayTest-Prefix.pch"; sourceTree = "<group>"; };
@@ -56,7 +55,6 @@
 		3DD33E1D1822A5D6006B607C /* JXRangeArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXRangeArray.h; sourceTree = "<group>"; };
 		3DD33E1E1822A5D6006B607C /* JXRangeArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXRangeArray.m; sourceTree = "<group>"; };
 		3DD33E201822A5D6006B607C /* JXRangeArrayTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXRangeArrayTest.m; sourceTree = "<group>"; };
-		3DD33E241822A716006B607C /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,7 +70,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3DD33E251822A717006B607C /* SenTestingKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -95,7 +92,7 @@
 			isa = PBXGroup;
 			children = (
 				3DD33DF41822A43A006B607C /* JXRangeArray */,
-				3DD33E091822A478006B607C /* JXRangeArrayTest.octest */,
+				3DD33E091822A478006B607C /* JXRangeArrayTest.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -104,7 +101,6 @@
 			isa = PBXGroup;
 			children = (
 				3DD33DF71822A43A006B607C /* Foundation.framework */,
-				3DD33E241822A716006B607C /* SenTestingKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -199,8 +195,8 @@
 			);
 			name = JXRangeArrayTest;
 			productName = JXRangeArrayTest;
-			productReference = 3DD33E091822A478006B607C /* JXRangeArrayTest.octest */;
-			productType = "com.apple.product-type.bundle";
+			productReference = 3DD33E091822A478006B607C /* JXRangeArrayTest.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -388,7 +384,6 @@
 				);
 				INFOPLIST_FILE = "TestBundle/JXRangeArrayTest-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				WRAPPER_EXTENSION = octest;
 			};
 			name = Debug;
 		};
@@ -403,7 +398,6 @@
 				GCC_PREFIX_HEADER = "TestBundle/JXRangeArrayTest-Prefix.pch";
 				INFOPLIST_FILE = "TestBundle/JXRangeArrayTest-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				WRAPPER_EXTENSION = octest;
 			};
 			name = Release;
 		};
@@ -426,6 +420,7 @@
 				3DD33E041822A43A006B607C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		3DD33E171822A478006B607C /* Build configuration list for PBXNativeTarget "JXRangeArrayTest" */ = {
 			isa = XCConfigurationList;
@@ -434,6 +429,7 @@
 				3DD33E191822A478006B607C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
