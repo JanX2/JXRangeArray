@@ -263,7 +263,7 @@ const NSUInteger testRangeArrayOf4Count = sizeof(testRangeArrayOf4)/sizeof(testR
 		if (idx == 2) {
 			*stop = YES;
 		}
-		XCTAssertTrue(NSEqualRanges([rangeArray rangeAtIndex:idx], testRangeArrayOf4[idx]), @"rangeArray[%$0lu] should be the same as testRangeArrayOf4[%$0lu].", (unsigned long)idx);
+		XCTAssertTrue(NSEqualRanges([rangeArray rangeAtIndex:idx], testRangeArrayOf4[idx]), @"rangeArray[%1$lu] should be the same as testRangeArrayOf4[%1$lu].", (unsigned long)idx);
 		
 		iterationCounter++;
 	}];
@@ -283,7 +283,7 @@ const NSUInteger testRangeArrayOf4Count = sizeof(testRangeArrayOf4)/sizeof(testR
 		if (idx == 2) {
 			*stop = YES;
 		}
-		XCTAssertTrue(NSEqualRanges([rangeArray rangeAtIndex:idx], testRangeArrayOf4[idx]), @"rangeArray[%$0lu] should be the same as testRangeArrayOf4[%$0lu].", (unsigned long)idx);
+		XCTAssertTrue(NSEqualRanges([rangeArray rangeAtIndex:idx], testRangeArrayOf4[idx]), @"rangeArray[%1$lu] should be the same as testRangeArrayOf4[%1$lu].", (unsigned long)idx);
 		
 		iterationCounter++;
 	}];
