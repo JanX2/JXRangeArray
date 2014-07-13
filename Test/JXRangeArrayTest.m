@@ -202,6 +202,22 @@ const NSUInteger testRangeArrayOf4Count = sizeof(testRangeArrayOf4)/sizeof(testR
 	XCTAssertEqualObjects(rangeArray1, rangeArray2, @"Two range arrays should be equal after parity is achieved via removeRangeAtIndex.");
 }
 
+- (void)testRemoveLastRangeViaIndex
+{
+	JXRangeArray *rangeArray1 = [[JXRangeArray alloc] initWithRanges:(NSRange *)&testRangeArrayOf4
+															   count:testRangeArrayOf4Count];
+	
+	JXRangeArray *rangeArray2 = [JXRangeArray new];
+	
+	[rangeArray2 addRange:testRangeArrayOf4[0]];
+	[rangeArray2 addRange:testRangeArrayOf4[1]];
+	[rangeArray2 addRange:testRangeArrayOf4[2]];
+	
+	[rangeArray1 removeRangeAtIndex:3];
+	
+	XCTAssertEqualObjects(rangeArray1, rangeArray2, @"Two range arrays should be equal after parity is achieved via removeRangeAtIndex.");
+}
+
 - (void)testReplaceRangeAtIndex
 {
 	JXRangeArray *rangeArray1 = [[JXRangeArray alloc] initWithRanges:(NSRange *)&testRangeArrayOf4
