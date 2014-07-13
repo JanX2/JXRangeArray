@@ -181,7 +181,11 @@ NS_INLINE void ensureCapacity(NSUInteger *capacity_p, NSRange **ranges_pp, NSUIn
 
 - (NSUInteger)hash
 {
-	// Pretty inefficient. Suggestions?
+	// Pretty inefficient, but you should rarely need this.
+	// In case this becomes a performance issue,
+	// you can subclass and return _count (like Foundation)
+	// or design a scheme appropriate
+	// for your required performance characteristics.
 	const NSUInteger prime = 31;
 	NSUInteger result = _count;
 
