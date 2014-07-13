@@ -207,6 +207,11 @@ NS_INLINE void ensureCapacity(NSUInteger *capacity_p, NSRange **ranges_pp, NSUIn
 {
 	__block BOOL stop = NO;
 	
+	if (_count == 0) {
+		return;
+		// The code below is safe in this case, but terminating early makes it explicit.
+	}
+	
 	if (opts & NSEnumerationReverse) {
 		// Iterate from n-1 down to 0.
 		for (NSUInteger i = _count; i-- > 0; ) {
