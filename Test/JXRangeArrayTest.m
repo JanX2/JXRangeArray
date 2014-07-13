@@ -287,6 +287,19 @@ const NSUInteger testRangeArrayOf4Count = sizeof(testRangeArrayOf4)/sizeof(testR
 	XCTAssertEqual(iterationCounter, (NSUInteger)3, @"iterationCounter should be 3.");
 }
 
+- (void)testEnumerateEmptyRangesUsingBlock
+{
+	JXRangeArray *rangeArray = [[JXRangeArray alloc] init];
+	
+	__block NSUInteger iterationCounter = 0;
+	
+	[rangeArray enumerateRangesUsingBlock:^(NSRange range, NSUInteger idx, BOOL *stop) {
+		iterationCounter++;
+	}];
+	
+	XCTAssertEqual(iterationCounter, (NSUInteger)0, @"iterationCounter should be 0.");
+}
+
 - (void)testReverseEnumerateRangesUsingBlock
 {
 	JXRangeArray *rangeArray = [[JXRangeArray alloc] initWithRanges:(NSRange *)&testRangeArrayOf4
@@ -305,6 +318,20 @@ const NSUInteger testRangeArrayOf4Count = sizeof(testRangeArrayOf4)/sizeof(testR
 	}];
 	
 	XCTAssertEqual(iterationCounter, (NSUInteger)2, @"iterationCounter should be 2.");
+}
+
+- (void)testReverseEnumerateEmptyRangesUsingBlock
+{
+	JXRangeArray *rangeArray = [[JXRangeArray alloc] init];
+	
+	__block NSUInteger iterationCounter = 0;
+	
+	[rangeArray enumerateRangesWithOptions:NSEnumerationReverse
+								usingBlock:^(NSRange range, NSUInteger idx, BOOL *stop) {
+									iterationCounter++;
+								}];
+	
+	XCTAssertEqual(iterationCounter, (NSUInteger)0, @"iterationCounter should be 0.");
 }
 
 - (void)testRangeContainingIndex
