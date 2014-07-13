@@ -182,13 +182,14 @@ NS_INLINE void ensureCapacity(NSUInteger *capacity_p, NSRange **ranges_pp, NSUIn
 - (NSUInteger)hash
 {
 	// Pretty inefficient. Suggestions?
+	const NSUInteger prime = 31;
 	NSUInteger result = _count;
 
 	for (NSUInteger i = 0; i < _count; i++) {
 		NSRange thisRange = _ranges[i];
 		
-		result ^= thisRange.location;
-		result ^= thisRange.length;
+		result = prime * result + thisRange.location;
+		result = prime * result + thisRange.length;
 	}
 
 	return result;
