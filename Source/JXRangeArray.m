@@ -116,10 +116,10 @@ NS_INLINE void ensureCapacity(NSUInteger *capacity_p, NSRange **ranges_pp, NSUIn
 	NSAssert2(idx < _count, @"index %lu beyond count %lu", (unsigned long)idx, (unsigned long)_count);
     
 	_count--;
-	// Compilers will usually optimizes this into a memmove().
-	for (; idx < _count; ++idx) {
-		_ranges[idx] = _ranges[idx + 1];
-	}
+	
+	// This is safe in any case, because we have decremented _count above
+	// so we can’t access anything beyond our allocated memory.
+	memmove(&(_ranges[idx]), &(_ranges[idx + 1]), sizeof(NSRange) * (_count - idx));
 }
 
 - (void)replaceRangeAtIndex:(NSUInteger)idx withRange:(NSRange)range;
