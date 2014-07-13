@@ -80,12 +80,16 @@ const NSUInteger JXRangeArrayGrowthFactor = 2;
 	return _ranges[idx];
 }
 
+NS_INLINE void ensureCapacity(NSUInteger *capacity_p, NSRange **ranges_pp, NSUInteger count) {
+	if (count >= *capacity_p) {
+		*capacity_p *= JXRangeArrayGrowthFactor;
+		*ranges_pp = realloc(*ranges_pp, sizeof(NSRange) * *capacity_p);
+	}
+}
+
 - (void)addRange:(NSRange)range;
 {
-	if (_count >= _capacity) {
-		_capacity *= JXRangeArrayGrowthFactor;
-		_ranges = realloc(_ranges, sizeof(NSRange) * _capacity);
-	}
+	ensureCapacity(&_capacity, &_ranges, _count);
     
 	_ranges[_count++] = range;
 }
@@ -97,10 +101,7 @@ const NSUInteger JXRangeArrayGrowthFactor = 2;
 	if (idx == _count) {
 		[self addRange:range];
 	} else {
-		if (_count >= _capacity) {
-			_capacity *= JXRangeArrayGrowthFactor;
-			_ranges = realloc(_ranges, sizeof(NSRange) * _capacity);
-		}
+		ensureCapacity(&_capacity, &_ranges, _count);
 		
 		memmove(&(_ranges[idx + 1]), &(_ranges[idx]), sizeof(NSRange) * (_count - idx));
 		
